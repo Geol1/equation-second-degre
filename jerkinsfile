@@ -1,0 +1,28 @@
+pipeline {
+    agent any // Utilisez n'importe quel agent disponible
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    sh 'mvn clean install'
+                }
+            }
+        }
+
+        stage('Tests Unitaires') {
+            steps {
+                script {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        post {
+            success {
+                archiveArtifacts(artifacts: 'target/*.jar', allowEmptyArchive: true)
+            }
+        }
+    }
+}

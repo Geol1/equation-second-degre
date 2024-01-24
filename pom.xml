@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.inf563</groupId>
+  <artifactId>tp</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>tp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+
+
+    <pmd.plugin.version>3.21.1-pmd-7-SNAPSHOT</pmd.plugin.version>
+    <pmd.version>7.0.0-rc3</pmd.version>
+
+    <checkstyle-maven-plugin.version>3.0.0</checkstyle-maven-plugin.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+
+     <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-java</artifactId>
+        <version>7.0.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>net.masterthought</groupId>
+        <artifactId>cucumber-reporting</artifactId>
+        <version>5.6.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>3.141.59</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+        <version>5.2.3</version>
+    </dependency>
+    <dependency>
+        <groupId>com.aventstack</groupId>
+        <artifactId>extentreports</artifactId>
+        <version>5.0.9</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.7.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-csv</artifactId>
+        <version>1.8</version> <!-- Use the latest version available -->
+    </dependency>
+
+  </dependencies>
+
+  <reporting>
+    <plugins>
+      <!-- <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.4</version>
+      </plugin> -->
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.21.2</version>
+        <configuration>
+          <linkXref>true</linkXref>
+          <sourceEncoding>utf-8</sourceEncoding>
+          <minimumTokens>100</minimumTokens>
+          <targetJdk>1.5</targetJdk>
+          <excludes>
+            <exclude>**/*Bean.java</exclude>
+            <exclude>*/generated/.java</exclude>
+          </excludes>
+          <excludeRoots>
+            <excludeRoot>target/generated-sources/stubs</excludeRoot>
+          </excludeRoots>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+          <configLocation>checkstyle-checker.xml</configLocation>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+      
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+            <consoleOutput>true</consoleOutput>
+            <failsOnError>false</failsOnError>
+            <outputDirectory>reports/checkstyle</outputDirectory>
+          </configuration>
+          <executions>
+              <execution>
+                  <id>validate</id>
+                  <phase>validate</phase>
+                  <configuration>
+                      <configLocation>checkstyle.xml</configLocation>
+                      <encoding>UTF-8</encoding>
+                      <consoleOutput>true</consoleOutput>
+                      <failsOnError>false</failsOnError>
+                  </configuration>
+                  <goals>
+                      <goal>check</goal>
+                  </goals>
+              </execution>
+          </executions>
+        </plugin>
+
+        <!-- Plugin PMD -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>3.15.0</version>
+          <configuration>
+              <linkXRef>true</linkXRef>
+              <minimumTokens>100</minimumTokens>
+              <sourceEncoding>utf-8</sourceEncoding>
+              <failOnViolation>true</failOnViolation>
+              <format>xml</format>
+              <outputDirectory>reports/pmd</outputDirectory>
+              <targetDirectory>reports/pmd</targetDirectory>
+              <configLocation>pmd-ruleset.xml</configLocation>
+          </configuration>
+          <executions>
+              <execution>
+                  <phase>validate</phase>
+                  <goals>
+                      <goal>pmd</goal>
+                      <goal>check</goal>
+                      <goal>cpd-check</goal>
+                  </goals>
+              </execution>
+          </executions>
+          <!-- <dependencies>
+            <dependency>
+                <groupId>net.sourceforge.pmd</groupId>
+                <artifactId>pmd</artifactId>
+                <version>6.44.0</version>
+            </dependency>
+          </dependencies> -->
+        </plugin>
+
+        <!-- Plugin FindBugs -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>3.0.5</version>
+          <configuration>
+              <xmlOutput>true</xmlOutput>
+              <effort>Max</effort>
+              <threshold>Low</threshold>
+              <xmlOutputDirectory>reports/findbugs</xmlOutputDirectory>
+              <configLocation>findbugs-exclude.xml</configLocation>
+          </configuration> 
+          <executions>
+            <execution>
+              <id>findbugs</id>
+              <phase>verify</phase>
+              <goals>
+                  <goal>findbugs</goal>
+              </goals>
+            </execution>
+            <execution>
+              <phase>validate</phase>
+              <goals>
+                  <goal>findbugs</goal>
+                  <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+          <!-- Ajoutez la configuration pour le générateur de rapports HTML -->
+        <dependencies>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>findbugs</artifactId>
+                <version>3.0.1</version> <!-- Utilisez la version compatible avec votre plugin -->
+            </dependency>
+        </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

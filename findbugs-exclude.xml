@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <!-- Exclude specific bugs by their category and type -->
+    <Match>
+        <Bug category="BAD_PRACTICE" type="DM_DEFAULT_ENCODING"/>
+    </Match>
+
+    <!-- Exclude bugs in a specific package -->
+    <Match>
+        <Class name="com.example.generated.*"/>
+    </Match>
+</FindBugsFilter>
