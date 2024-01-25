@@ -16,15 +16,14 @@ public class TestCaseGenerator2 {
 
             String line;
 
-
-        // Uncomment the line below to trigger PMD's UnusedLocalVariable rule
-        int unusedVariable2 = 0;
+            // Uncomment the line below to trigger PMD's UnusedLocalVariable rule
+            int unusedVariable2 = 0;
 
             String testCode = "package com.example;\n" +
                     "import org.junit.Test;\n" +
                     "import static org.junit.Assert.*;\n" +
                     "import java.io.FileWriter;\n" +
-                    "import java.io.IOException;\n"+
+                    "import java.io.IOException;\n" +
 
                     "import java.lang.reflect.InvocationTargetException;\n\n" +
                     "public class TestCases2 {\n\n" +
@@ -51,13 +50,15 @@ public class TestCaseGenerator2 {
                     "\t\treturn new double[]{root1, root2};\n" +
                     "\t}\n" +
                     "\t}\n\n" +
-                    "\n \tpublic static void saveResultsToCSV(String filePath, double a, double b, double c, double[] solutions) {\n" +
+                    "\n \tpublic static void saveResultsToCSV(String filePath, double a, double b, double c, double[] solutions) {\n"
+                    +
 
                     "\n \ttry (FileWriter writer = new FileWriter(filePath)) {\n" +
                     "\n \t writer.append(\"Equation,ResultatX0,ResultatX1\\n\");\n" +
 
                     "\n \tfor (int i = 0; i < solutions.length; i++) {\n" +
-                    "\n \twriter.append(\"Equation \" + (i + 1) + \":\" + a + \"x2+\"+b+\"x\"+c+ \",\" + \",\" + solutions[i] + \"\\n\");\n"+
+                    "\n \twriter.append(\"Equation \" + (i + 1) + \":\" + a + \"x2+\"+b+\"x\"+c+ \",\" + \",\" + solutions[i] + \"\\n\");\n"
+                    +
                     "\n \t}\n" +
 
                     "\n \tSystem.out.println(\"Résultats enregistrés dans le fichier CSV : \" + filePath);\n" +
@@ -92,8 +93,8 @@ public class TestCaseGenerator2 {
             try (FileWriter writer = new FileWriter(fileName)) {
                 writer.write(testCode);
             } catch (IOException e) {
-            e.printStackTrace();
-        }
+                e.printStackTrace();
+            }
 
             reader.close();
         } catch (IOException e) {
@@ -141,7 +142,7 @@ public class TestCaseGenerator2 {
                 "            // e.printStackTrace();\n" + //
                 "            fail(e.getMessage());\n" + //
                 "        }" +
-                
+
                 "\t}\n";
 
         // Remplace les marqueurs de position dans le modèle de test
@@ -150,7 +151,6 @@ public class TestCaseGenerator2 {
 
     private static double[] getExpectedArray(double a, double b, double c) {
         double discriminant = b * b - 4 * a * c;
-
         if (a == 0) {
             throw new IllegalArgumentException("L'équation n'est pas du second degré.");
         } else if (discriminant < 0) {
